@@ -29,5 +29,10 @@
           inherit (pkgs) bws process-compose-mcp;
         }
       );
+
+      checks = forAllSystems (
+        system:
+        self.packages.${system}
+      );
     };
 }
