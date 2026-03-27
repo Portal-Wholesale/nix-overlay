@@ -26,7 +26,7 @@
           };
         in
         {
-          inherit (pkgs) bws playwright-cli process-compose-mcp;
+          inherit (pkgs) bws playwright-cli process-compose-mcp agent-browser;
         }
       );
 
