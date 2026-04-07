@@ -3,4 +3,5 @@ final: prev: {
   playwright-cli = final.callPackage ./pkgs/playwright-cli { };
   process-compose-mcp = final.callPackage ./pkgs/process-compose-mcp { };
   agent-browser = final.callPackage ./pkgs/agent-browser { };
+  secretspec = final.callPackage ./pkgs/secretspec { };
 }
