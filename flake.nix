@@ -26,7 +26,7 @@
           };
         in
         {
-          inherit (pkgs) bws playwright-cli process-compose-mcp agent-browser secretspec;
+          inherit (pkgs) bws playwright-cli process-compose-mcp agent-browser secretspec glitchtip-cli;
         }
       );
 
