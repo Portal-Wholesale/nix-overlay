@@ -26,7 +26,7 @@
           };
         in
         {
-          inherit (pkgs) bws playwright-cli process-compose-mcp agent-browser secretspec glitchtip-cli;
+          inherit (pkgs) bws playwright-cli process-compose-mcp agent-browser secretspec glitchtip-cli postgres-mcp;
         }
       );
 

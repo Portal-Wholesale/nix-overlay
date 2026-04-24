@@ -5,4 +5,5 @@ final: prev: {
   agent-browser = final.callPackage ./pkgs/agent-browser { };
   secretspec = final.callPackage ./pkgs/secretspec { };
   glitchtip-cli = final.callPackage ./pkgs/glitchtip-cli { };
+  postgres-mcp = final.callPackage ./pkgs/postgres-mcp { };
 }
