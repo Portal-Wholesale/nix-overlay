@@ -8,4 +8,5 @@ final: prev: {
   postgres-mcp = final.callPackage ./pkgs/postgres-mcp { };
   rustdesk = final.callPackage ./pkgs/rustdesk { };
   xata-cli = final.callPackage ./pkgs/xata-cli { };
+  infisical = final.callPackage ./pkgs/infisical { };
 }
