@@ -8,7 +8,7 @@
 
 rustPlatform.buildRustPackage {
   pname = "secretspec";
-  version = "0-unstable-2026-07-17";
+  version = "unstable-2026-07-17";
 
   src = fetchFromGitHub {
     owner = "cachix";
