@@ -8,19 +8,19 @@
 
 rustPlatform.buildRustPackage {
   pname = "secretspec";
-  version = "0-unstable-2026-04-07";
+  version = "0-unstable-2026-07-17";
 
   src = fetchFromGitHub {
     owner = "cachix";
     repo = "secretspec";
-    rev = "87d940f32c6b146299e4734847633d510cb268ae";
-    hash = "sha256-53tDJEMEOszX51ecEmzGwTgaARSKm6KmaMUhKI3B7U4=";
+    rev = "8fa325976d54990a0397ef1ede3670e7b42615f5";
+    hash = "sha256-JLiVSh4LoylqOdm47j8mWqbUbOg6sBsctW+S0FMjpCc=";
   };
 
-  cargoHash = "sha256-XqDWUQ9hzptNfGtTUftaokuuBsgMbE4HwiIZRQNp/C4=";
+  cargoHash = "sha256-+8k3oATVBBBq1gS3Klj3tUoObXkDc4ucfdQ84Bqkr4c=";
 
   buildAndTestSubdir = "secretspec";
-  buildFeatures = [ "bws" ];
+  buildFeatures = [ "infisical" ];
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [
@@ -29,7 +29,7 @@ rustPlatform.buildRustPackage {
   ];
 
   meta = {
-    description = "Declarative secrets management (with bws provider)";
+    description = "Declarative secrets management (with Infisical provider)";
     homepage = "https://github.com/cachix/secretspec";
   };
 }
