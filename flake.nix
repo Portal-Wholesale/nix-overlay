@@ -26,7 +26,7 @@
           };
         in
         {
-          inherit (pkgs) bws playwright-cli process-compose-mcp agent-browser secretspec glitchtip-cli postgres-mcp xata-cli;
+          inherit (pkgs) bws playwright-cli process-compose-mcp agent-browser secretspec glitchtip-cli postgres-mcp meat xata-cli;
         }
         // nixpkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
           inherit (pkgs) rustdesk;
