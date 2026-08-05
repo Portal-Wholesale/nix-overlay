@@ -11,7 +11,7 @@ buildGoModule {
   version = "unstable-2026-08-04";
 
   src = fetchFromGitHub {
-    owner = "boldsoftware";
+    owner = "rolandkakonyi";
     repo = "meat";
     rev = "4434a03ec0c440f3d939978e2fb1b65a530a4e5c";
     hash = "sha256-jMnGEhfnw8j8dYGnSiZveM72ZUu69+cKMTtUzE27KPM=";
