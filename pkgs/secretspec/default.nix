@@ -1,35 +1,61 @@
 {
-  rustPlatform,
-  fetchFromGitHub,
-  pkg-config,
-  openssl,
-  dbus,
+  lib,
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
 }:
 
-rustPlatform.buildRustPackage {
+let
+  version = "0.18.0";
+  releases = {
+    aarch64-darwin = {
+      target = "aarch64-apple-darwin";
+      hash = "sha256-7Y5Q6TMjByKXFPuf6WP/+Wuhmz6vNj2bW4qoBjMYXlQ=";
+    };
+    x86_64-darwin = {
+      target = "x86_64-apple-darwin";
+      hash = "sha256-z6OjQAZi6kp5ZYZwTaeY5WqPxcQJecK1bAUVhSfXkBo=";
+    };
+    aarch64-linux = {
+      target = "aarch64-unknown-linux-gnu";
+      hash = "sha256-XyFxRKnPgGARp3raXItzReXwfKj0iigxuYtsXiy5qV0=";
+    };
+    x86_64-linux = {
+      target = "x86_64-unknown-linux-gnu";
+      hash = "sha256-n1w1We/MasSxKl8MHFSD7+lOCDUtzQxEG0GttmPCUuo=";
+    };
+  };
+  release = releases.${stdenv.hostPlatform.system};
+in
+stdenv.mkDerivation {
   pname = "secretspec";
-  version = "unstable-2026-07-17";
+  inherit version;
 
-  src = fetchFromGitHub {
-    owner = "cachix";
-    repo = "secretspec";
-    rev = "8fa325976d54990a0397ef1ede3670e7b42615f5";
-    hash = "sha256-JLiVSh4LoylqOdm47j8mWqbUbOg6sBsctW+S0FMjpCc=";
+  src = fetchurl {
+    url = "https://github.com/cachix/secretspec/releases/download/v${version}/secretspec-${release.target}.tar.xz";
+    inherit (release) hash;
   };
 
-  cargoHash = "sha256-+8k3oATVBBBq1gS3Klj3tUoObXkDc4ucfdQ84Bqkr4c=";
+  nativeBuildInputs = lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ];
+  buildInputs = lib.optionals stdenv.hostPlatform.isLinux [ stdenv.cc.cc.lib ];
 
-  buildAndTestSubdir = "secretspec";
-  buildFeatures = [ "infisical" ];
+  installPhase = ''
+    runHook preInstall
+    install -Dm755 secretspec $out/bin/secretspec
+    runHook postInstall
+  '';
 
-  nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    openssl
-    dbus
-  ];
+  doInstallCheck = true;
+  installCheckPhase = ''
+    $out/bin/secretspec --version | grep -F ${lib.escapeShellArg version}
+  '';
 
   meta = {
-    description = "Declarative secrets management (with Infisical provider)";
+    description = "Declarative secrets management";
     homepage = "https://github.com/cachix/secretspec";
+    license = lib.licenses.asl20;
+    mainProgram = "secretspec";
+    platforms = builtins.attrNames releases;
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
   };
 }

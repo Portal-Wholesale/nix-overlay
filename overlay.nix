@@ -3,6 +3,7 @@ final: prev: {
   playwright-cli = final.callPackage ./pkgs/playwright-cli { };
   process-compose-mcp = final.callPackage ./pkgs/process-compose-mcp { };
   secretspec = final.callPackage ./pkgs/secretspec { };
+  # secretspec-unstable = final.callPackage ./pkgs/secretspec/unstable.nix { };
   postgres-mcp = final.callPackage ./pkgs/postgres-mcp { };
   meat = final.callPackage ./pkgs/meat { };
   rustdesk = final.callPackage ./pkgs/rustdesk { };

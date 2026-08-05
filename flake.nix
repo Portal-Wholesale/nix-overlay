@@ -26,7 +26,15 @@
           };
         in
         {
-          inherit (pkgs) bws playwright-cli process-compose-mcp secretspec postgres-mcp meat;
+          inherit (pkgs)
+            bws
+            playwright-cli
+            process-compose-mcp
+            secretspec
+            postgres-mcp
+            meat
+            ;
+          # inherit (pkgs) secretspec-unstable;
           # Temporarily disabled; package definitions remain under ./pkgs.
           # inherit (pkgs) agent-browser glitchtip-cli xata-cli;
         }
@@ -35,9 +43,6 @@
         }
       );
 
-      checks = forAllSystems (
-        system:
-        self.packages.${system}
-      );
+      checks = forAllSystems (system: self.packages.${system});
     };
 }
