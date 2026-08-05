@@ -6,6 +6,7 @@ final: prev: {
   secretspec = final.callPackage ./pkgs/secretspec { };
   glitchtip-cli = final.callPackage ./pkgs/glitchtip-cli { };
   postgres-mcp = final.callPackage ./pkgs/postgres-mcp { };
+  meat = final.callPackage ./pkgs/meat { };
   rustdesk = final.callPackage ./pkgs/rustdesk { };
   xata-cli = final.callPackage ./pkgs/xata-cli { };
 }
