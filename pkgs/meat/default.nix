@@ -32,7 +32,7 @@ buildGoModule {
   # These upstream HTTP mock tests need loopback sockets, which are unavailable
   # in the Nix sandbox. Keep the remaining library and CLI tests enabled.
   checkFlags = [
-    "-skip=^(TestAbridge_(AnthropicEditPlanEndToEnd|OpenAIEditPlanEndToEndPreservesReasoning)|TestGenerate_.*|TestOpenAIGenerate_.*|TestDiscoverExeGatewayBase($|_.*)|TestNewAnthropicFromEnv_(PrefersExplicitKey|FallsBackToGateway)|TestNewOpenAIFromEnv_PrefersExplicitKey|TestNewModelFromEnv_DefaultsToOpenAIThroughGateway)$"
+    "-skip=^(TestAbridge_(AnthropicEditPlanEndToEnd|OpenAIEditPlanEndToEndPreservesReasoning)|TestGenerate_(RetriesTransient|NoRetryOnBadRequest|GivesUpAfterMaxAttempts|MaxTokensStopIsAnError|SendsMaxOutputTokens)|TestOpenAIGenerate_(StreamingText|IncompleteIsError)|TestDiscoverExeGatewayBase(|_NoLLMIntegration|_Team)|TestNewAnthropicFromEnv_(PrefersExplicitKey|FallsBackToGateway)|TestNewOpenAIFromEnv_PrefersExplicitKey|TestNewModelFromEnv_DefaultsToOpenAIThroughGateway)$"
   ];
 
   postInstall = ''
