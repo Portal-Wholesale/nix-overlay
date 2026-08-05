@@ -8,13 +8,13 @@
 
 buildGoModule {
   pname = "meat";
-  version = "unstable-2026-08-03";
+  version = "unstable-2026-08-04";
 
   src = fetchFromGitHub {
     owner = "boldsoftware";
     repo = "meat";
-    rev = "f39f41dfe7b5b37a12b35fdfbaecc7e779855bd3";
-    hash = "sha256-fj04sdMiwPxh4F+kBpF5c+YYeKnKCDD9dsIgwAGPoK4=";
+    rev = "4434a03ec0c440f3d939978e2fb1b65a530a4e5c";
+    hash = "sha256-jMnGEhfnw8j8dYGnSiZveM72ZUu69+cKMTtUzE27KPM=";
   };
 
   vendorHash = null;
@@ -28,6 +28,12 @@ buildGoModule {
   preCheck = ''
     subPackages=
   '';
+
+  # These upstream HTTP mock tests need loopback sockets, which are unavailable
+  # in the Nix sandbox. Keep the remaining library and CLI tests enabled.
+  checkFlags = [
+    "-skip=^(TestAbridge_(AnthropicEditPlanEndToEnd|OpenAIEditPlanEndToEndPreservesReasoning)|TestGenerate_.*|TestOpenAIGenerate_.*|TestDiscoverExeGatewayBase($|_.*)|TestNewAnthropicFromEnv_(PrefersExplicitKey|FallsBackToGateway)|TestNewOpenAIFromEnv_PrefersExplicitKey|TestNewModelFromEnv_DefaultsToOpenAIThroughGateway)$"
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/meat \
