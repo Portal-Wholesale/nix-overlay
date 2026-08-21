@@ -3,14 +3,8 @@ final: prev: {
   playwright-cli = final.callPackage ./pkgs/playwright-cli { };
   process-compose-mcp = final.callPackage ./pkgs/process-compose-mcp { };
   secretspec = final.callPackage ./pkgs/secretspec { };
-  # secretspec-unstable = final.callPackage ./pkgs/secretspec/unstable.nix { };
   postgres-mcp = final.callPackage ./pkgs/postgres-mcp { };
   pgbot = final.callPackage ./pkgs/pgbot { };
   meat = final.callPackage ./pkgs/meat { };
   rustdesk = final.callPackage ./pkgs/rustdesk { };
-
-  # Temporarily disabled; uncomment these together with their flake exports.
-  # agent-browser = final.callPackage ./pkgs/agent-browser { };
-  # glitchtip-cli = final.callPackage ./pkgs/glitchtip-cli { };
-  # xata-cli = final.callPackage ./pkgs/xata-cli { };
 }
