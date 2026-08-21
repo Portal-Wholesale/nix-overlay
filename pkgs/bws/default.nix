@@ -6,25 +6,25 @@
 }:
 
 let
-  version = "2.0.0";
+  version = "2.1.0";
   system = stdenv.hostPlatform.system;
   selectAsset =
     {
       x86_64-linux = {
         url = "https://github.com/bitwarden/sdk-sm/releases/download/bws-v${version}/bws-x86_64-unknown-linux-musl-${version}.zip";
-        hash = "sha256-6m6xjxJwOI8S0Vo1+RnMs0iNMqd3Qzuu/og9Vh9G/HM=";
+        hash = "sha256-9Z7hUOQrghKNQ3CH6brJIAU8a/3cuWDSDOk4blrJu6Y=";
       };
       aarch64-linux = {
         url = "https://github.com/bitwarden/sdk-sm/releases/download/bws-v${version}/bws-aarch64-unknown-linux-musl-${version}.zip";
-        hash = "sha256-3mG/usvPbjZI3cjb1sqLsiRUOMz1+U1UEpmXUo9adS0=";
+        hash = "sha256-6w8a5h0cO3QkTShBIzJ24Fx36L5NoZftkPxiSDhwBeE=";
       };
       x86_64-darwin = {
         url = "https://github.com/bitwarden/sdk-sm/releases/download/bws-v${version}/bws-x86_64-apple-darwin-${version}.zip";
-        hash = "sha256-LzP6faPXw+4YOPPF8+ikcFHj/bAcRXAfaET6CzROktE=";
+        hash = "sha256-b2JrOXE2iQKvG5hHwCeRobRmaWnXVh4gR2gc3teZdTc=";
       };
       aarch64-darwin = {
         url = "https://github.com/bitwarden/sdk-sm/releases/download/bws-v${version}/bws-aarch64-apple-darwin-${version}.zip";
-        hash = "sha256-W7tD/Ox1UoxdeOTf2yK2s2js3/cCC82FORFWRYf2H4o=";
+        hash = "sha256-nLHBxuYWTYOy4zmIO6ArTLs3GIzppISxzoJJRDFj4GY=";
       };
     }
     .${system};
