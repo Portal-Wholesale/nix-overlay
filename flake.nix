@@ -35,9 +35,6 @@
             pgbot
             meat
             ;
-          # inherit (pkgs) secretspec-unstable;
-          # Temporarily disabled; package definitions remain under ./pkgs.
-          # inherit (pkgs) agent-browser glitchtip-cli xata-cli;
         }
         // nixpkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
           inherit (pkgs) rustdesk;
