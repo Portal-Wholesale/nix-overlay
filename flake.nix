@@ -32,6 +32,7 @@
             process-compose-mcp
             secretspec
             postgres-mcp
+            pgbot
             meat
             ;
           # inherit (pkgs) secretspec-unstable;

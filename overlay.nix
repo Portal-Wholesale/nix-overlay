@@ -5,6 +5,7 @@ final: prev: {
   secretspec = final.callPackage ./pkgs/secretspec { };
   # secretspec-unstable = final.callPackage ./pkgs/secretspec/unstable.nix { };
   postgres-mcp = final.callPackage ./pkgs/postgres-mcp { };
+  pgbot = final.callPackage ./pkgs/pgbot { };
   meat = final.callPackage ./pkgs/meat { };
   rustdesk = final.callPackage ./pkgs/rustdesk { };
 
