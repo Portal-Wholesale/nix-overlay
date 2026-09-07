@@ -28,6 +28,7 @@
         {
           inherit (pkgs)
             bws
+            crit
             playwright-cli
             process-compose-mcp
             secretspec
@@ -35,6 +36,9 @@
             pgbot
             meat
             ;
+        }
+        // nixpkgs.lib.optionalAttrs (nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.codiff) {
+          inherit (pkgs) codiff;
         }
         // nixpkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
           inherit (pkgs) rustdesk;
