@@ -23,6 +23,7 @@
   libxext,
   libxfixes,
   libxkbcommon,
+  libxkbfile,
   libxrandr,
   nspr,
   nss,
@@ -84,6 +85,7 @@ stdenv.mkDerivation {
     libxext
     libxfixes
     libxkbcommon
+    libxkbfile
     libxrandr
     nspr
     nss
