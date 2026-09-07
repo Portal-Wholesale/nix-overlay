@@ -98,7 +98,7 @@ stdenv.mkDerivation {
   unpackPhase =
     if stdenv.hostPlatform.isLinux then
       ''
-        dpkg-deb -x $src .
+        dpkg-deb --fsys-tarfile "$src" | tar --no-same-owner --no-same-permissions -xf -
       ''
     else
       ''
