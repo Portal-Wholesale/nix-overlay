@@ -133,7 +133,8 @@ stdenv.mkDerivation {
 
   doInstallCheck = stdenv.hostPlatform.isLinux;
   installCheckPhase = ''
-    $out/bin/codiff --version | grep -F ${lib.escapeShellArg version}
+    grep -F ${lib.escapeShellArg ''"version": "${version}"''} \
+      $out/lib/codiff/resources/app/package.json
   '';
 
   meta = {
