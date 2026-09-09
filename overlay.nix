@@ -1,4 +1,5 @@
 final: prev: {
+  agent-native = final.callPackage ./pkgs/agent-native { };
   bws = final.callPackage ./pkgs/bws { };
   codiff = final.callPackage ./pkgs/codiff { };
   crit = final.callPackage ./pkgs/crit { };
