@@ -26,6 +26,7 @@
         in
         {
           inherit (pkgs)
+            agent-native
             bws
             crit
             playwright-cli
