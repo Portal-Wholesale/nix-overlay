@@ -1,9 +1,0 @@
-{
-  "name": "agent-native-nix",
-  "version": "0.177.1",
-  "private": true,
-  "dependencies": {
-    "@agent-native/core": "0.177.1",
-    "@agent-native/recap-cli": "0.5.27"
-  }
-}
