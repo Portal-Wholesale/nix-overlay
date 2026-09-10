@@ -7,6 +7,7 @@
   pnpmConfigHook,
   makeWrapper,
   gitMinimal,
+  fetchFromGitHub,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -14,6 +15,13 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   version = "0.177.1";
 
   src = ./.;
+
+  agentNativeSource = fetchFromGitHub {
+    owner = "BuilderIO";
+    repo = "agent-native";
+    rev = "d18226514fbdb78858f88d1264b25563206d69e1";
+    hash = "sha256-bLpJoS6ZoYsxJYLdaxjxUDfeia4G67vYa7Kln2eaXXo=";
+  };
 
   pnpmDeps = fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
@@ -38,10 +46,18 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     mkdir -p $out/libexec/agent-native $out/bin $out/share/licenses/agent-native
     cp -R node_modules package.json pnpm-lock.yaml $out/libexec/agent-native/
     cp LICENSE $out/share/licenses/agent-native/LICENSE
+    mkdir -p $out/libexec/agent-native/node_modules/@agent-native/core/dist/cli/templates
+    cp -R ${finalAttrs.agentNativeSource}/templates/plan \
+      $out/libexec/agent-native/node_modules/@agent-native/core/dist/cli/templates/plan
 
     substituteInPlace \
       $out/libexec/agent-native/node_modules/@agent-native/core/dist/cli/index.js \
       --replace-fail 'Sentry.init({' 'Sentry.init({ enabled: false,'
+    substituteInPlace \
+      $out/libexec/agent-native/node_modules/@agent-native/core/dist/cli/create.js \
+      --replace-fail \
+        'fs.copyFileSync(srcPath, destPath);' \
+        'fs.copyFileSync(srcPath, destPath); fs.chmodSync(destPath, fs.statSync(srcPath).mode | 0o200);'
     find $out/libexec/agent-native/node_modules/@agent-native/{core,recap-cli}/dist \
       -type f -name '*.js' -exec sed -i \
       -e 's|npx @agent-native/core@latest|agent-native|g' \
@@ -113,6 +129,11 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     $out/bin/agent-native plan local init \
       --title "Nix install check" --kind recap --dir local-recap
     $out/bin/agent-native plan local check --dir local-recap
+
+    cd ..
+    $out/bin/agent-native create local-viewer --standalone --template plan
+    test -f local-viewer/package.json
+    test -w local-viewer/app/lib/app-config.ts
   '';
 
   meta = {
