@@ -28,6 +28,7 @@
           inherit (pkgs)
             bws
             crit
+            fb-idb
             playwright-cli
             process-compose-mcp
             secretspec
@@ -41,6 +42,9 @@
         }
         // nixpkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
           inherit (pkgs) rustdesk;
+        }
+        // nixpkgs.lib.optionalAttrs (nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.idb-companion) {
+          inherit (pkgs) idb-companion;
         }
       );
 

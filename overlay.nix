@@ -2,6 +2,8 @@ final: prev: {
   bws = final.callPackage ./pkgs/bws { };
   codiff = final.callPackage ./pkgs/codiff { };
   crit = final.callPackage ./pkgs/crit { };
+  fb-idb = final.callPackage ./pkgs/fb-idb { };
+  idb-companion = final.callPackage ./pkgs/idb-companion { };
   playwright-cli = final.callPackage ./pkgs/playwright-cli { };
   process-compose-mcp = final.callPackage ./pkgs/process-compose-mcp { };
   secretspec = final.callPackage ./pkgs/secretspec { };
