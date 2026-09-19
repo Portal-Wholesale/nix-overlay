@@ -33,15 +33,15 @@
 }:
 
 let
-  version = "1.13.0";
+  version = "1.14.0";
   sources = {
     aarch64-darwin = {
       asset = "Codiff-darwin-arm64-${version}.zip";
-      hash = "sha256-GnVnE/k+BL62xMHO75IwojGiScaU7Q599BGZzZeRAA0=";
+      hash = "sha256-3DFtlFv/3w+xSfY5wIFZrHXJiuQ+Y4hWSePq49/4J/I=";
     };
     x86_64-linux = {
       asset = "codiff_${version}_amd64.deb";
-      hash = "sha256-CpPYk+E826dUnQJ+GGdROKsnX2SxOmgr/+l6ex3GrU4=";
+      hash = "sha256-jXVLAwCCxJ3j/JuM48I7YkdVzcf+eRkEqPvGwJl55yY=";
     };
   };
   source = sources.${stdenv.hostPlatform.system};
