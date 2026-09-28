@@ -37,6 +37,9 @@
             meat
             ;
         }
+        // nixpkgs.lib.optionalAttrs (nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.beadbox) {
+          inherit (pkgs) beadbox;
+        }
         // nixpkgs.lib.optionalAttrs (nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.codiff) {
           inherit (pkgs) codiff;
         }

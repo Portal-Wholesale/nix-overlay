@@ -1,4 +1,5 @@
 final: prev: {
+  beadbox = final.callPackage ./pkgs/beadbox { };
   bws = final.callPackage ./pkgs/bws { };
   codiff = final.callPackage ./pkgs/codiff { };
   crit = final.callPackage ./pkgs/crit { };
