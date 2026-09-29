@@ -93,6 +93,8 @@ stdenv.mkDerivation {
           mkdir -p "$out/Applications" "$out/bin"
           cp -r Beadbox.app "$out/Applications/"
           ln -s ../Applications/Beadbox.app/Contents/MacOS/beadbox "$out/bin/beadbox"
+          # Beadbox looks for its sidecar beside the executable used to launch it.
+          ln -s ../Applications/Beadbox.app/Contents/MacOS/beadbox-sidecar "$out/bin/beadbox-sidecar"
         ''
     }
     runHook postInstall
