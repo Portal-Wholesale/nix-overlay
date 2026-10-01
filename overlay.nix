@@ -12,4 +12,5 @@ final: prev: {
   pgbot = final.callPackage ./pkgs/pgbot { };
   meat = final.callPackage ./pkgs/meat { };
   rustdesk = final.callPackage ./pkgs/rustdesk { };
+  portal-nixbot-setup = final.callPackage ./pkgs/portal-nixbot-setup { };
 }
