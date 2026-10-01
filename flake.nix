@@ -35,6 +35,7 @@
             postgres-mcp
             pgbot
             meat
+            portal-nixbot-setup
             ;
         }
         // nixpkgs.lib.optionalAttrs (nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.beadbox) {
