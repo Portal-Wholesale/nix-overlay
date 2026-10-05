@@ -27,6 +27,7 @@
         {
           inherit (pkgs)
             bws
+            cf
             crit
             fb-idb
             playwright-cli
