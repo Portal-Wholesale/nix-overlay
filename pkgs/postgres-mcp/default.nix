@@ -23,7 +23,8 @@ python312.pkgs.buildPythonApplication rec {
   build-system = with python312.pkgs; [ hatchling ];
 
   dependencies = with python312.pkgs; [
-    mcp
+    # Upstream requires `mcp<2`; nixpkgs' default `mcp` is 2.x.
+    mcp_1
     psycopg
     psycopg-pool
     humanize
