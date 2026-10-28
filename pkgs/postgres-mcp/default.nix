@@ -1,10 +1,10 @@
 {
   lib,
-  python312,
+  python3,
   fetchFromGitHub,
 }:
 
-python312.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonApplication rec {
   pname = "postgres-mcp";
   version = "0.3.0";
   pyproject = true;
@@ -20,12 +20,12 @@ python312.pkgs.buildPythonApplication rec {
   # wrapper — minor version bumps are backwards-compatible in practice.
   pythonRelaxDeps = [ "pglast" ];
 
-  build-system = with python312.pkgs; [ hatchling ];
+  build-system = with python3.pkgs; [ hatchling ];
 
-  dependencies = with python312.pkgs; [
+  dependencies = with python3.pkgs; [
     # Upstream requires `mcp<2`. Newer nixpkgs ships `mcp` 2.x and keeps 1.x
     # as `mcp_1`; older ones (e.g. 26.05) have no `mcp_1` and a 1.x `mcp`.
-    (python312.pkgs.mcp_1 or python312.pkgs.mcp)
+    (python3.pkgs.mcp_1 or python3.pkgs.mcp)
     psycopg
     psycopg-pool
     humanize
@@ -42,7 +42,7 @@ python312.pkgs.buildPythonApplication rec {
         "pre-commit"
         "ty"
       ];
-      dependencies = (old.dependencies or [ ]) ++ [ python312.pkgs.diskcache ];
+      dependencies = (old.dependencies or [ ]) ++ [ python3.pkgs.diskcache ];
       doCheck = false;
       doInstallCheck = false;
     }))
