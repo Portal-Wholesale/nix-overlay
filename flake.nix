@@ -25,6 +25,7 @@
         in
         {
           inherit (pkgs)
+            beads
             bws
             cf
             crit
