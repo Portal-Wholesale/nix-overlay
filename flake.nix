@@ -51,6 +51,9 @@
         // nixpkgs.lib.optionalAttrs (nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.idb-companion) {
           inherit (pkgs) idb-companion;
         }
+        // nixpkgs.lib.optionalAttrs (nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.simslim) {
+          inherit (pkgs) simslim;
+        }
       );
 
       checks = forAllSystems (system: self.packages.${system});
